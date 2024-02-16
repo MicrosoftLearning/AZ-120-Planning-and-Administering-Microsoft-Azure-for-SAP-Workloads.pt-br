@@ -7,15 +7,21 @@ lab:
 # Módulo AZ 1006: Elaborar e implementar uma infraestrutura para dar suporte a cargas de trabalho SAP no Azure
 # Laboratório de curso de um dia do AZ-1006: Visão geral da implantação e manutenção do Centro do Azure para soluções SAP (ACSS)
 
-Tempo Estimado: 100 minutos
+>**Importante**: **No momento, este laboratório não tem suporte** (24 de fevereiro).
+    - Para obter uma implantação de pré-requisito manual detalhada, confira [Lab 6a](https://github.com/MicrosoftLearning/AZ-120-Planning-and-Administering-Microsoft-Azure-for-SAP-Workloads/blob/master/Instructions/AZ-120_Lab06a-ACSS_One_Day.md)
+    - Para a implantação da infraestrutura de demonstração do ACSS, confira [Lab 6c(https://github.com/MicrosoftLearning/AZ-120-Planning-and-Administering-Microsoft-Azure-for-SAP-Workloads/blob/master/Instructions/AZ-120_Lab06c-ACSS_One_Day.md)].
 
-Todas as tarefas nesse laboratório de curso de um dia do AZ-1006 são executadas no portal do Azure
+Tempo Estimado: 100 minutos
+
+Todas as tarefas neste laboratório de curso de 1 dia do AZ-1006 são realizadas no portal do Azure
 
 ## Objetivos
 
 Depois de realizar este laboratório, você será capaz de:
 
-- Implantar e manter a infraestrutura que hospeda cargas de trabalho SAP no Azure usando o Centro do Azure para soluções SAP
+- implementar os pré-requisitos mínimos para avaliar a implantação de cargas de trabalho SAP no Azure usando o Centro do Azure para soluções SAP
+- implantar a infraestrutura que hospedará cargas de trabalho SAP no Azure usando o Centro do Azure para soluções SAP
+- Manter as cargas de trabalho SAP no Azure juntamente com o uso de soluções do Centro do Azure para soluções SAP
 
 ## Instruções
 
@@ -25,7 +31,7 @@ Duração: 30 minutos
 
 Nesse exercício, você implementa os pré-requisitos mínimos para avaliar a implantação de cargas de trabalho SAP no Azure usando o Centro do Azure para soluções SAP. Isso inclui as seguintes atividades:
 
->**Importante**: Os pré-requisitos implementados neste exercício *não* se destinam a representar as práticas recomendadas para implantar cargas de trabalho SAP no Azure usando o Centro do Azure para soluções SAP. Sua finalidade é minimizar o tempo, o custo e os recursos necessários para avaliar a mecânica de implantação de cargas de trabalho SAP no Azure usando o Centro do Azure para soluções SAP e executando tarefas de gerenciamento e manutenção pós-implantação. A implementação dos pré-requisitos inclui as seguintes atividades:
+>**Importante**: os pré-requisitos implementados neste exercício *não* se destinam a representar as práticas recomendadas para implantar cargas de trabalho SAP no Azure usando o Centro do Azure para soluções SAP. Sua finalidade é minimizar o tempo, o custo e os recursos necessários para avaliar a mecânica de implantação de cargas de trabalho SAP no Azure usando o Centro do Azure para soluções SAP e executando tarefas de gerenciamento e manutenção pós-implantação. A implementação dos pré-requisitos inclui as seguintes atividades:
 
 - Criar uma identidade gerenciada atribuída pelo usuário do Microsoft Entra a ser usada pelo Centro do Azure para soluções SAP para acesso ao Armazenamento do Azure durante sua implantação.
 - Conceder a identidade gerenciada atribuída ao usuário do Microsoft Entra que é usada para realizar o acesso de implantação à assinatura do Azure e à conta V2 de Uso Geral do Armazenamento do Azure
@@ -35,19 +41,19 @@ Nesse exercício, você implementa os pré-requisitos mínimos para avaliar a im
 
 Essas atividades correspondem às seguintes tarefas desse exercício:
 
-- Tarefa 1: Criar uma identidade gerenciada atribuída pelo usuário do Microsoft Entra
-- Tarefa 2: Configurar atribuições de função controle de acesso baseado em função (RBAC) do Azure para a identidade gerenciada atribuída pelo usuário do Microsoft Entra ID
+- Tarefa 1: criar uma identidade gerenciada atribuída pelo usuário do Microsoft Entra
+- Tarefa 2: configurar atribuições de função controle de acesso baseado em função (RBAC) do Azure para a identidade gerenciada atribuída pelo usuário do Microsoft Entra ID
 - Tarefa 3: Criar a rede virtual do Azure
 - Tarefa 4: Criar e configurar um grupo de segurança de rede
 - Tarefa 5: Criar e configurar um gateway da NAT
 
 #### Tarefa 1: Criar uma identidade gerenciada atribuída pelo usuário do Microsoft Entra
 
-Nessa tarefa, você criará uma identidade gerenciada atribuída pelo usuário do Microsoft Entra a ser usada pelo Centro do Azure para soluções SAP para acesso ao Armazenamento do Azure durante sua implantação.
+Nessa tarefa, crie uma identidade gerenciada atribuída pelo usuário do Microsoft Entra a ser usada pelo Centro do Azure para soluções SAP para acesso ao Armazenamento do Microsoft Azure durante sua implantação.
 
 1. No computador do laboratório, inicie um navegador da Web, navegue até o portal do Azure em `https://portal.azure.com` e autentique-se usando uma conta da Microsoft ou uma conta do Microsoft Entra ID com a função Proprietário na assinatura do Azure que você usa nesse laboratório.
 1. Na janela do navegador da Web que exibe o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione **Identidades Gerenciadas**.
-1. Na página **Identidades Gerenciadas**, selecione **+ Criar**.
+1. Na página **Identidades gerenciadas**, selecione **+ Criar**.
 1. Na guia **Noções básicas** da página **Criar Identidade Gerenciada Atribuída ao Usuário**, especifique as seguintes configurações e selecione **Examinar + Criar**:
 
    |Configuração|Valor|
@@ -57,9 +63,9 @@ Nessa tarefa, você criará uma identidade gerenciada atribuída pelo usuário d
    |Region|o nome da região do Azure que você usa para a implantação do ACSS|
    |Nome|**acss-infra-MI**|
 
-1. Na guia **Revisão**, aguarde a conclusão do processo de validação e selecione **Criar**.
+1. Na guia **Revisar**, aguarde a conclusão do processo de validação e selecione **Criar**.
 
-   >**Observação**: Não aguarde a conclusão do processo de provisionamento, mas prossiga para a próxima tarefa. O provisionamento deve levar apenas alguns segundos.
+   >**Observação**: Não espere que o processo de provisionamento seja concluído, mas prossiga para a próxima tarefa. O provisionamento deve levar apenas alguns segundos.
 
    >**Observação**: Em uma das próximas tarefas, você autorizará o acesso da identidade gerenciada à conta de armazenamento que hospeda a mídia de instalação do SAP para acomodar a instalação de software SAP por meio do Centro do Azure para soluções SAP.
 
@@ -68,7 +74,7 @@ Nessa tarefa, você criará uma identidade gerenciada atribuída pelo usuário d
 1. No computador do laboratório, na janela do navegador da Web que exibe o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione **Assinaturas**.
 1. Na página **Assinaturas**, selecione a entrada que representa a assinatura do Azure que você usará para esse laboratório. 
 1. Na página que exibe as propriedades da assinatura do Azure, selecione **Controle de acesso (IAM)**.
-1. Na folha **Controle de acesso (IAM),** selecione **+ Adicionar** e, no menu suspenso, selecione **Adicionar atribuição de função**.
+1. Na página **Controle de acesso (IAM),** selecione **+ Adicionar** e, no menu suspenso, selecione **Adicionar atribuição de função**.
 1. Na guia **Função** da página **Adicionar atribuição de função**, na listagem **Funções de função de trabalho**, pesquise e selecione a entrada **função de serviço** do Centro do Azure para soluções SAP e selecione **Avançar**.
 1. Na guia **Membros** da página **Adicionar atribuição de função**, para** atribuir acesso**, selecione **Identidade Gerenciada** e clique em + **Selecionar membros**.
 1. No painel **Selecionar identidades gerenciadas**, especifique as seguintes configurações:
@@ -86,7 +92,7 @@ Nessa tarefa, você criará uma identidade gerenciada atribuída pelo usuário d
    
 1. Na folha **Controle de acesso (IAM),** selecione **+ Adicionar** e, no menu suspenso, selecione **Adicionar atribuição de função**.
 1. Na guia **Função** da página **Adicionar atribuição de função**, na listagem **Funções de função de trabalho**, pesquise e selecione a entrada **Administrador do Centro do Azure para soluções SAP** e selecione **Avançar**.
-1. Na guia **Membros**.
+1. Na guia **Membros**
    - em **Atribuir acesso a**, selecione **Usuário, Grupo ou Entidade de Serviço**
    - clique **em + Selecionar membros**.
 1. No painel **Selecionar membros**, na caixa **Selecionar texto**, digite o nome da conta de usuário do Microsoft Entra ID usada para acessar a assinatura do Azure que você está usando para este laboratório, selecione-a na lista de resultados correspondentes à sua entrada e clique em **Selecionar**.
@@ -97,7 +103,7 @@ Nessa tarefa, você criará uma identidade gerenciada atribuída pelo usuário d
    
 1. Na folha **Controle de acesso (IAM),** selecione **+ Adicionar** e, no menu suspenso, selecione **Adicionar atribuição de função**.
 1. Na guia **Função** da página **Adicionar atribuição de função**, na listagem **Funções de função de trabalho**, pesquise e selecione a entrada **Operador de Identidade Gerenciada** e selecione **Avançar**.
-1. Na guia **Membros**.
+1. Na guia **Membros**
    - em **Atribuir acesso a**, selecione **Usuário, Grupo ou Entidade de Serviço**
    - clique **em + Selecionar membros**.
 1. No painel **Selecionar membros**, na caixa **Selecionar texto**, digite o nome da conta de usuário do Microsoft Entra ID usada para acessar a assinatura do Azure que você está usando para este laboratório, selecione-a na lista de resultados correspondentes à sua entrada e clique em **Selecionar**.
@@ -109,11 +115,11 @@ Nessa tarefa, você criará uma identidade gerenciada atribuída pelo usuário d
 Nessa tarefa, você cria a rede virtual do Azure que hospeda todas as máquinas virtuais do Azure incluídas na implantação. Além disso, na rede virtual, você cria as seguintes sub-redes:
 
 - aplicativo – destinado a hospedar o aplicativo SAP e servidores de instância do Centro para Serviços SA
-- db – destinado à hospedagem do nível do banco de dados SAP
+- db: destinado à hospedagem da camada de banco de dados SAP
 
 1. No computador do laboratório, na janela do navegador da Web que exibe o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione **Redes virtuais**.
 1. Na página **Redes virtuais**, selecione **+ Criar**.
-1. Na guia **Noções básicas** da folha **Criar rede virtual**, especifique as seguintes configurações e selecione **Avançar**:
+1. Na guia **Noções básicas** da página **Criar rede virtual**, especifique as seguintes configurações e selecione **Avançar**:
 
    |Configuração|Valor|
    |---|---|
@@ -124,13 +130,13 @@ Nessa tarefa, você cria a rede virtual do Azure que hospeda todas as máquinas 
 
 1. Na guia **Segurança**, aceite as configurações padrão e selecione **Avançar**.
 
-   >**Observação**: Nesse momento, você pode provisionar o Azure Bastion e o Firewall do Azure. No entanto, você os provisionará separadamente depois que a rede virtual for criada.
+   >**Observação**: Neste momento, você pode provisionar o Azure Bastion e o Firewall do Azure; no entanto, você os provisionará separadamente depois que a rede virtual for criada.
 
 1. Na guia **Endereços IP**, especifique as seguintes configurações e selecione **Examinar + criar**:
 
    |Configuração|Valor|
    |---|---|
-   |Espaço de endereços IP|**10.0.0.0/16 (65.536 endereços)**|
+   |Espaço de endereços IP|**10.0.0.0/16 (65,536 addresses)**|
 
 1. Na lista de sub-redes, selecione o ícone da lixeira para excluir a sub-rede **padrão**.
 1. Selecione **+Adicionar uma sub-rede**.
@@ -154,13 +160,13 @@ Nessa tarefa, você cria a rede virtual do Azure que hospeda todas as máquinas 
 1. Na guia **Endereços IP**, selecione **Examinar + criar**:
 1. Na guia **Examinar + criar**, aguarde a conclusão do processo de validação e selecione **Criar**.
 
-   >**Observação**: Não aguarde a conclusão do processo de provisionamento, mas prossiga para a próxima tarefa. O provisionamento deve levar apenas alguns segundos.
+   >**Observação**: Não espere que o processo de provisionamento seja concluído, mas prossiga para a próxima tarefa. O provisionamento deve levar apenas alguns segundos.
 
 #### Tarefa 4: Criar e configurar um grupo de segurança de rede
 
 Nessa tarefa, você cria e configura um grupo de segurança de rede (NSG) usado para restringir o acesso de saída de sub-redes da rede virtual que hospeda a implantação. Você pode fazer isso bloqueando a conectividade com a Internet, mas permitindo explicitamente conexões com os seguintes serviços:
 
-- Pontos de extremidade de infraestrutura de atualização do SUSE ou Red Hat
+- Pontos de extremidade de infraestrutura de atualização do SUSE ou Red Hat
 - Armazenamento do Azure
 - Cofre de Chave do Azure
 - Microsoft Entra ID
@@ -170,30 +176,30 @@ Nessa tarefa, você cria e configura um grupo de segurança de rede (NSG) usado 
 
 1. No computador do laboratório, na janela do navegador da Web que exibe o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione **Grupos de segurança de rede**.
 1. Na página **Grupos de segurança de rede**, selecione **+ Criar**.
-1. Na guia **Noções básicas** da página **Criar grupo de segurança de rede**, especifique as seguintes configurações e selecione **Examinar + criar**:
+1. Na guia **Básico** da página **Criar grupo** de segurança de rede, especifique as seguintes configurações e selecione **Examinar + criar**:
 
    |Configuração|Valor|
    |---|---|
    |Assinatura|O nome da assinatura do Azure usada nesse laboratório|
    |Grupo de recursos|**acss-infra-RG**|
    |Nome|**acss-infra-NSG**|
-   |Region|o nome da mesma região do Azure que você usou anteriormente nesse exercício|
+   |Region|o nome da mesma região do Azure que você usou anteriormente neste exercício|
 
 1. Na guia **Revisar + criar**, aguarde a conclusão do processo de validação e selecione **Criar**.
 
-   >**Observação**: Aguarde o processo de provisionamento ser concluído. O provisionamento deve levar menos de um minuto.
+   >**Observação**: Aguarde o processo de provisionamento ser concluído. O provisionamento deve levar menos de 1 minuto.
 
 1. No painel **A implantação foi concluída**, selecione **Ir para o recurso**.
 
-   >**Observação**: Por padrão, as regras internas de grupos de segurança de rede permitem todo o tráfego de saída, todo o tráfego dentro da mesma rede virtual, bem como todo o tráfego entre redes virtuais emparelhadas. Do ponto de vista da segurança, você deve considerar restringir esse comportamento padrão. A configuração proposta restringe a conectividade de saída à Internet e ao Azure. Você também pode usar regras NSG para restringir a conectividade em uma rede virtual.
+   >**Observação**: Por padrão, as regras internas de grupos de segurança de rede permitem todo o tráfego de saída, todo o tráfego dentro da mesma rede virtual, bem como todo o tráfego entre redes virtuais emparelhadas. Do ponto de vista da segurança, você deve considerar restringir esse comportamento padrão. A configuração proposta restringe a conectividade de saída para a Internet e o Azure. Você também pode usar regras NSG para restringir a conectividade em uma rede virtual.
 
 1. Na página **acss-infra-NSG**, no menu de navegação, na seção **Configurações**, selecione **Regras de segurança de saída**.
 1. Na página **Regras de segurança de saída \|acss-infra-NSG**, selecione **+ Adicionar**.
-1. No painel **Adicionar regra de segurança de saída**, especifique as seguintes configurações e selecione **Adicionar**:
+1. No painel **Adicionar regra de segurança de saída**, especifique as seguintes configurações e selecione **Adicionar**:
 
-   >**Observação**: A regra a seguir deve ser adicionada para permitir explicitamente a conectividade com os pontos de extremidade de infraestrutura de atualização do Red Hat.
+   >**Observação**: A regra a seguir deve ser adicionada para permitir explicitamente a conectividade com os pontos de extremidade de infraestrutura de atualização do Red Hat.
 
-   >**Observação**: Para identificar os endereços IP a serem usados para RHEL, consulte [Preparar a rede para implantação de infraestrutura](https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/prepare-network#allowlist-suse-or-red-hat-endpoints)
+   >**Observação**: Para identificar os endereços IP a serem usados para RHEL, confira [Preparar a rede para implantação de infraestrutura](https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/prepare-network#allowlist-suse-or-red-hat-endpoints)
 
    |Configuração|Valor|
    |---|---|
@@ -212,9 +218,9 @@ Nessa tarefa, você cria e configura um grupo de segurança de rede (NSG) usado 
 1. Na página **Regras de segurança de saída \|acss-infra-NSG**, selecione **+ Adicionar**.
 1. No painel **Adicionar regra de segurança de saída**, especifique as seguintes configurações e selecione **Adicionar**:
 
-   >**Observação**: A regra a seguir deve ser adicionada para permitir explicitamente a conectividade com pontos de extremidade de infraestrutura de atualização do SUSE.
+   >**Observação**: A regra a seguir deve ser adicionada para permitir explicitamente a conectividade com pontos de extremidade de infraestrutura de atualização do SUSE.
 
-   >**Observação**: Para identificar os endereços IP a serem usados para SUSE, consulte [Preparar a rede para implantação de infraestrutura](https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/prepare-network#allowlist-suse-or-red-hat-endpoints)
+   >**Observação**: Para identificar os endereços IP a serem usados para SUSE, confira [Preparar a rede para implantação de infraestrutura](https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/prepare-network#allowlist-suse-or-red-hat-endpoints)
 
    |Configuração|Valor|
    |---|---|
@@ -230,7 +236,7 @@ Nessa tarefa, você cria e configura um grupo de segurança de rede (NSG) usado 
    |Nome|**AllowAnySUSEOutbound**|
    |Descrição|**Permitir conectividade de saída com pontos de extremidade de infraestrutura de atualização do SUSE**|
 
-   >**Observação**: A regra a seguir deve ser adicionada para permitir explicitamente a conectividade com o Armazenamento do Azure.
+   >**Observação**: A regra a seguir deve ser adicionada para permitir explicitamente a conectividade com o Armazenamento do Microsoft Azure.
 
 1. Na página **Regras de segurança de saída \|acss-infra-NSG**, selecione **+ Adicionar**.
 1. No painel **Adicionar regra de segurança de saída**, especifique as seguintes configurações e selecione **Adicionar**:
@@ -247,11 +253,11 @@ Nessa tarefa, você cria e configura um grupo de segurança de rede (NSG) usado 
    |Ação|**Permitir**|
    |Prioridade|**400**|
    |Nome|**AllowAnyCustomStorageOutbound**|
-   |Descrição|**Permitir conectividade de saída com o Armazenamento do Azure**|
+   |Descrição|**Permitir conectividade de saída com o Armazenamento do Microsoft Azure**|
 
    >**Observação**: Você pode substituir a marca de serviço **Armazenamento** por uma que seja específica da região, como **Storage.EastUS**.
 
-   >**Observação**: A regra a seguir deve ser adicionada para permitir explicitamente a conectividade com o Azure Key Vault.
+   >**Observação**: A regra a seguir deve ser adicionada para permitir explicitamente a conectividade com o Azure Key Vault.
 
 1. Na página **Regras de segurança de saída \|acss-infra-NSG**, selecione **+ Adicionar**.
 1. No painel **Adicionar regra de segurança de saída**, especifique as seguintes configurações e selecione **Adicionar**:
@@ -268,7 +274,7 @@ Nessa tarefa, você cria e configura um grupo de segurança de rede (NSG) usado 
    |Ação|**Permitir**|
    |Prioridade|**500**|
    |Nome|**AllowAnyCustomKeyVaultOutbound**|
-   |Descrição|**Permitir conectividade de saída com o Azure Key Vault**|
+   |Descrição|**Permitir conectividade de saída com o Azure Key Vault**|
 
    >**Observação**: A regra a seguir deve ser adicionada para permitir explicitamente a conectividade com o Microsoft Entra ID.
 
@@ -289,7 +295,7 @@ Nessa tarefa, você cria e configura um grupo de segurança de rede (NSG) usado 
    |Nome|**AllowAnyCustomEntraIDOutbound**|
    |Descrição|**Permitir conectividade de saída com a ID do Microsoft Entra**|
 
-   >**Observação**: A regra a seguir deve ser adicionada para permitir explicitamente a conectividade com o Azure Resource Manager.
+   >**Observação**: A regra a seguir deve ser adicionada para permitir explicitamente a conectividade com o Azure Resource Manager.
 
 1. Na página **Regras de segurança de saída \|acss-infra-NSG**, selecione **+ Adicionar**.
 1. No painel **Adicionar regra de segurança de saída**, especifique as seguintes configurações e selecione **Adicionar**:
@@ -306,9 +312,9 @@ Nessa tarefa, você cria e configura um grupo de segurança de rede (NSG) usado 
    |Ação|**Permitir**|
    |Prioridade|**700**|
    |Nome|**AllowAnyCustomARMOutbound**|
-   |Descrição|**Permitir conectividade de saída com o Azure Resource Manager**|
+   |Descrição|**Permitir conectividade de saída com o Azure Resource Manager**|
 
-   >**Observação**: A última regra deve ser adicionada para bloquear explicitamente a conectividade com a Internet.
+   >**Observação**: A última regra deve ser adicionada para bloquear explicitamente a conectividade com a Internet.
 
 1. Na página **Regras de segurança de saída \|acss-infra-NSG**, selecione **+ Adicionar**.
 1. No painel **Adicionar regra de segurança de saída**, especifique as seguintes configurações e selecione **Adicionar**:
@@ -325,7 +331,7 @@ Nessa tarefa, você cria e configura um grupo de segurança de rede (NSG) usado 
    |Ação|**Deny**|
    |Prioridade|**1000**|
    |Nome|**DenyAnyCustomInternetOutbound**|
-   |Descrição|**Negar conectividade de saída com a Internet**|
+   |Descrição|**Negar a conectividade de saída com a Internet**|
 
    >**Observação**: Por fim, você precisa atribuir o NSG às sub-redes relevantes da rede virtual que hospedará a implantação do SAP.
 
@@ -364,21 +370,21 @@ Duração: 40 minutos
 
 Nesse exercício, você executará a implantação do Centro do Azure para soluções SAP. Isso inclui a atividade a seguir:
 
-- Usar as soluções do Centro do Azure para soluções SAP para implantar a infraestrutura capaz de hospedar cargas de trabalho SAP em uma assinatura do Azure.
+- Usar o Centro do Azure para soluções SAP para implantar a infraestrutura capaz de hospedar cargas de trabalho SAP em uma assinatura do Azure.
 
 Essa atividade corresponde à seguinte tarefa desse exercício:
 
-- Tarefa 1: Criar Instância Virtual para soluções SAP (VIS)
+- Tarefa 1: criar Instância Virtual para soluções SAP (VIS)
 
->**Observação**: Após a implantação bem-sucedida, você pode continuar com a instalação de software SAP usando as soluções do Centro do Azure para soluções SAP. No entanto, a instalação do software SAP não está incluída nesse laboratório.
+>**Observação**: após a implantação bem-sucedida, você pode continuar com a instalação de software SAP usando o Centro do Azure para soluções SAP. No entanto, a instalação do software SAP não está incluída nesse laboratório.
 
->**Observação**: Para obter informações sobre como instalar o software SAP usando o Centro do Azure para soluções SAP, consulte a documentação do Microsoft Learn que descreve como [Obter mídia de instalação SAP](https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/get-sap-installation-media) e [Instalar software SAP](https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/install-software). 
+>**Observação**: para obter informações sobre como instalar o software SAP usando o Centro do Azure para soluções SAP, confira a documentação do Microsoft Learn que descreve como [Obter mídia de instalação SAP](https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/get-sap-installation-media) e [Instalar software SAP](https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/install-software). 
 
-#### Tarefa 1: Criar Instância Virtual para soluções SAP (VIS)
+#### Tarefa 1: criar Instância Virtual para soluções SAP (VIS)
 
 1. No computador do laboratório, na janela do Microsoft Edge que exibe o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione o **Centro do Azure para Soluções SAP**. 
 1. Na página **Visão geral \| do Centro do Azure para Soluções SAP**, selecione** Criar um novo sistema SAP**.
-1. Na guia **Noções básicas** da página **Criar Instância Virtual para soluções SAP**, especifique as seguintes configurações e selecione **Avançar: Máquinas virtuais**
+1. Na guia **Básico** da página **Criar Instância Virtual para soluções SAP**, especifique as seguintes configurações e selecione **Avançar: Máquinas virtuais**
 
    |Configuração|Valor|
    |---|---|
@@ -391,7 +397,7 @@ Essa atividade corresponde à seguinte tarefa desse exercício:
    |Backup de banco de dados|**HANA**|
    |Método de escala HANA|**Escalar verticalmente (recomendado)**|
    |Tipo de implantação|**Distribuída com Alta Disponibilidade (HA)**|
-   |Disponibilidade de computação|**99,95% (Conjunto de Disponibilidade)**|
+   |Disponibilidade de computação|**99,95 (conjunto de disponibilidade)**|
    |Rede virtual|**acss-infra-VNET**|
    |Sub-rede do aplicativo|**app (10.0.2.0/24)**|
    |Sub-rede do banco de dados|**db (10.0.3.0/24)**|
@@ -412,30 +418,30 @@ Essa atividade corresponde à seguinte tarefa desse exercício:
 
    |Configuração|Valor|
    |---|---|
-   |Gerar Recomendação baseada em|**Padrão de Desempenho do Aplicativo SAP (SAPS) – selecione essa opção para fornecer o SAPS para a camada de aplicativo e o tamanho da memória do banco de dados e clique em Gerar Recomendações**|
-   |SAPS para nível de aplicativo|**1000**|
-   |Tamanho da memória do banco de dados (GiB)|**128**|
+   |Gerar Recomendação baseada em|**Padrão de Desempenho do Aplicativo SAP (SAPS): selecione essa opção para fornecer o SAPS para a camada de aplicativo e o tamanho da memória do banco de dados e clique em Gerar Recomendações**|
+   |SAPS para camada de aplicativo|**1000**|
+   |Tamanho da memória do banco de dados (GiB)|**128**|
 
 1. Selecione **Gerar recomendação**.
 1. Examine o tamanho e o número de VMs para as máquinas virtuais ASCS, aplicativo e banco de dados.
 
-   >**Observação**: Se necessário, ajuste os tamanhos recomendados selecionando o link **Ver todos os Tamanhos** para cada conjunto de máquinas virtuais e escolhendo um tamanho alternativo. Por padrão, o tipo de implantação distribuída com alta disponibilidade, bem como a camada de aplicativo SAPS e o tamanho de memória do banco de dados especificados acima, resultam nas seguintes recomendações mínimas de SKU de VM:
+   >**Observação**: se necessário, ajuste os tamanhos recomendados selecionando o link **Ver todos os Tamanhos** para cada conjunto de máquinas virtuais e escolhendo um tamanho alternativo. Por padrão, o tipo de implantação distribuída com alta disponibilidade, bem como a camada de aplicativo SAPS e o tamanho de memória do banco de dados especificados acima, resultam nas seguintes recomendações mínimas de SKU de VM:
    - 2 x Standard_D4ds_v5 para as VMs do ASCS (4 vCPUs e 16 GiB de memória cada)
    - 2 x Standard_D4ds_v5 para as VMs do aplicativo (4 vCPUs e 16 GiB de memória cada)
    - 2 x Standard_E16ds_v5 para as VMs de banco de dados (16 vCPUs e 128 GiB de memória cada)
 
-   >**Observação**: Se necessário, você pode solicitar aumento de cota selecionando o link **Cota de Solicitação** para um SKU específico de máquinas virtuais e enviando uma solicitação de aumento de cota. O processamento de uma solicitação normalmente leva alguns minutos.
+   >**Observação**: Se necessário, você pode solicitar aumento de cota selecionando o link **Cota de Solicitação** para um SKU específico de máquinas virtuais e enviando uma solicitação de aumento de cota. O processamento de uma solicitação normalmente leva alguns minutos.
 
-   >**Observação**: As soluções Centro do Azure para soluções SAP impõem o uso das SKUs de VM com suporte ao SAP durante a implantação.
+   >**Observação**: o Centro do Azure para soluções SAP impõem o uso de SKUs de VM com suporte do SAP durante a implantação.
 
 1. Na guia **Máquinas virtuais**, na seção **Discos de dados**, selecione o link **Exibir e personalizar a configuração**.
-1. Na página de configuração de **Disco de banco de dados**, examine a configuração recomendada sem fazer alterações e selecione **Fechar**.
-1. De volta à guia **Máquinas virtuais**, selecione **Avançar: Visualizar arquitetura**.
+1. Na página de **Configuração do disco de banco de dados**, examine a configuração recomendada sem fazer alterações e selecione **Fechar**.
+1. De volta à guia **Máquinas virtuais**, selecione **Avançar: Visualizar arquitetura**.
 1. Na guia **Visualizar Arquitetura**, examine o diagrama que ilustra a arquitetura recomendada e selecione **Examinar + criar**.
 1. Na guia **Revisar + criar**, aguarde a conclusão do processo de validação, marque a caixa de seleção para confirmar se você tem uma cota ampla disponível na região de implantação para evitar executar o erro "Cota Insuficiente" e selecione **Criar**.
 1. Na janela pop-up **Gerar novo par de chaves**, selecione **Baixar chave privada e criar recurso**.
 
-   >**Observação**: A chave privada necessária para se conectar às VMs do Azure incluídas na implantação será baixada para o computador do qual você está executando este laboratório.
+   >**Observação**: A chave privada necessária para se conectar às VMs do Azure incluídas na implantação será baixada para o computador do qual você está executando este laboratório.
 
    >**Observação**: aguarde até que a implantação seja concluída. Isso pode levar cerca de 25 minutos.
 
@@ -461,19 +467,19 @@ Essas atividades correspondem às seguintes tarefas desse exercício:
 
 #### Tarefa 1: Implementar pré-requisitos para backup de cargas de trabalho SAP gerenciadas pelo Centro do Azure para soluções SAP
 
->**Observação**: Ao configurar o Backup do Azure no nível de recurso vis nas soluções do Centro do Azure para soluções SAP, você pode, em uma etapa, habilitar o backup para VMs do Azure que hospedam o banco de dados, os servidores de aplicativos e a instância do Serviços do Centro do SAP e para o BD HANA. Para o backup do BD HANA, as soluções do Centro do Azure para soluções SAP executam automaticamente o script de pré-registro de backup.
+>**Observação**: Ao configurar o Backup do Azure no nível de recurso vis nas soluções do Centro do Azure para soluções SAP, você pode, em uma etapa, habilitar o backup para VMs do Azure que hospedam o banco de dados, os servidores de aplicativos e a instância do Serviços do Centro do SAP e para o BD HANA. Para o backup do BD HANA, o Centro do Azure para soluções SAP executa automaticamente o script de pré-registro de backup.
 
 1. No computador do laboratório, na janela do Microsoft Edge que exibe o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione o **Centro do Azure para Soluções SAP**.
-1. Na página **Visão geral \| do Centro do Azure para Soluções SAP**, no menu de navegação vertical no lado esquerdo, selecione **Instâncias virtuais para soluções SAP** e, na lista de instâncias virtuais, selecione a instância que você implantou no exercício anterior.
+1. Na página **Centro do Azure para soluções SAP \| Visão Geral**, no menu de navegação vertical no lado esquerdo, selecione **Instâncias virtuais para soluções SAP** e, na lista de instâncias virtuais, selecione a instância que você implantou no exercício anterior.
 1. Na página da instância virtual, no menu de navegação vertical à esquerda, na seção **Operações**, selecione **Backup (versão prévia)**.
 1. Observe a mensagem indicando que o backup não pode ser configurado, pois a instalação/registro de software SAP para esse sistema SAP não está concluída.
 
-   >**Observação**: Isso é esperado. Você não poderá configurar o backup dessa forma até que a instalação do software SAP seja concluída. No entanto, concluir a instalação também envolve pré-requisitos adicionais, incluindo a criação de cofres e políticas de backup, que examinaremos aqui. 
+   >**Observação**: isso é esperado. Você não poderá configurar o backup dessa forma até que a instalação do software SAP seja concluída. No entanto, concluir a instalação também envolve pré-requisitos adicionais, incluindo a criação de cofres e políticas de backup, que examinaremos aqui. 
 
-1. No computador do laboratório, na janela do Microsoft Edge que exibe o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione o **Centro de Backup**. 
-1. Na página **Centro de Backup**, no menu de navegação vertical no lado esquerdo, na seção **Gerenciar**, selecione **Cofres**.
-1. Na página **Cofres \| do Centro de Backup**, selecione **+ Cofre**.
-1. Na tela **Início: Crie uma página do Cofre**, examine os tipos de cofre disponíveis, verifique se o **Cofre de serviços de recuperação** (que dá suporte aos tipos de fonte de dados das **Máquinas virtuais do Azure** e **SAP HANA**) está selecionado e selecione **Continuar**.
+1. No computador do laboratório, na janela do Microsoft Edge que exibe o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione o **Centro de backup**. 
+1. Na página **Centro de backup**, no menu de navegação vertical no lado esquerdo, na seção **Gerenciar**, selecione **Cofres**.
+1. Na página **Centro de backup \| Cofres**, selecione **+ Cofre**.
+1. Na página **Início: Criar Cofre**, examine os tipos de cofre disponíveis, verifique se o **Cofre de serviços de recuperação** (que dá suporte aos tipos de fonte de dados das **Máquinas virtuais do Azure** e **SAP HANA na VM do Azure**) está selecionado e selecione **Continuar**.
 1. Na guia **Noções básicas** da página **Criar cofre dos Serviços de Recuperação**, especifique as seguintes configurações e selecione **Avançar: Redundância**
 
    |Configuração|Valor|
@@ -566,9 +572,9 @@ Essas atividades correspondem às seguintes tarefas desse exercício:
 
 #### Tarefa 2: Implementar pré-requisitos para recuperação de desastre de cargas de trabalho SAP gerenciadas pelo Centro do Azure para soluções SAP 
 
->**Observação**: Embora o serviço de soluções do Centro do Azure para soluções SAP seja um serviço com redundância de zona, não há failover iniciado pela Microsoft no caso de uma interrupção de região. Para corrigir esse cenário, você deve configurar a recuperação de desastre para sistemas SAP implantados usando soluções do Centro do Azure para soluções SAP seguindo as diretrizes descritas na [Visão geral de recuperação de desastres e nas diretrizes de infraestrutura para a carga de trabalho SAP](https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-overview-guide), que envolve o uso do Azure Site Recovery (ASR). Nessa tarefa, você percorrerá o processo de implementação de uma solução de recuperação de desastre baseada em ASR que depende dessas diretrizes.
+>**Observação**: Embora o serviço de soluções do Centro do Azure para soluções SAP seja um serviço com redundância de zona, não há failover iniciado pela Microsoft no caso de uma interrupção de região. Para corrigir esse cenário, você deve configurar a recuperação de desastre para sistemas SAP implantados usando o Centro do Azure para soluções SAP seguindo as diretrizes descritas na [Visão geral de recuperação de desastres e nas diretrizes de infraestrutura para a carga de trabalho SAP](https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-overview-guide), que envolve o uso do Azure Site Recovery (ASR). Nessa tarefa, você percorrerá o processo de implementação de uma solução de recuperação de desastre baseada em ASR que depende dessas diretrizes.
 
->**Observação**: O ASR é a solução recomendada para servidores de aplicativos e instâncias do Serviços do Centro do SAP. Para servidores de banco de dados, você deve considerar usar a funcionalidade de replicação nativa deles.
+>**Observação**: o ASR é a solução recomendada para servidores de aplicativos e instâncias de serviço do Centro do SAP. Para servidores de banco de dados, você deve considerar usar a funcionalidade de replicação nativa deles.
 
 1. No computador do laboratório, na janela do Microsoft Edge que exibe o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione **Cofres dos Serviços de Recuperação**.
 1. Na página **Cofres dos Serviços de Recuperação**, selecione **+ Criar**.
@@ -579,9 +585,9 @@ Essas atividades correspondem às seguintes tarefas desse exercício:
    |Assinatura|O nome da assinatura do Azure usada nesse laboratório|
    |Grupo de recursos|O nome de um **novo** grupo de recursos **acss-dr-RG**|
    |Nome do cofre|**acss-dr-RSV**|
-   |Region|o nome da região do Azure emparelhada com a implantação SAP registrada pelo ACSS|
+   |Region|o nome da região do Azure emparelhada com a implantação SAP registrada no ACSS|
 
-   >**Observação**: Para identificar a região que é emparelhada com aquela que hospeda suas cargas de trabalho de produção, consulte a documentação do MS Learn que descreve [Regiões emparelhadas do Azure](https://learn.microsoft.com/en-us/azure/reliability/cross-region-replication-azure#azure-paired-regions).
+   >**Observação**: para identificar a região que é emparelhada com aquela que hospeda suas cargas de trabalho de produção, consulte a documentação do MS Learn que descreve [Regiões emparelhadas do Azure](https://learn.microsoft.com/en-us/azure/reliability/cross-region-replication-azure#azure-paired-regions).
 
 1. Na guia **Redundância**, especifique as seguintes configurações e selecione **Avançar: Propriedades do Cofre**
 
@@ -593,7 +599,7 @@ Essas atividades correspondem às seguintes tarefas desse exercício:
 1. Na guia **Rede**, aceite a opção padrão para **Permitir o acesso público de todas as redes** e selecione **Examinar + criar**
 1. Na guia **Revisar + criar**, aguarde a conclusão do processo de validação e selecione **Criar**.
 
-   >**Observação**: Não aguarde a conclusão do processo de provisionamento, mas prossiga para a próxima etapa. O provisionamento pode levar cerca de dois minutos.
+   >**Observação**: não aguarde a conclusão do processo de provisionamento, mas prossiga para a próxima etapa. O provisionamento pode levar cerca de 2 minutos.
 
    >**Observação**: agora você configurará o ambiente de recuperação de desastre na região emparelhada na qual você criou o Cofre dos Serviços de Recuperação. Esse ambiente irá incluir uma rede virtual que hospedará réplicas das VMs do Azure atualmente hospedadas na região primária em que você provisionou a Instância Virtual para SAP. 
 
@@ -611,24 +617,24 @@ Essas atividades correspondem às seguintes tarefas desse exercício:
    |Modelo de implantação da máquina virtual|**Resource Manager**|
    |Recuperação de desastre entre as zonas de disponibilidade|**Não**|
 
-   >**Observação**: A **Recuperação de desastre entre zonas de disponibilidade** pode não ser configurável, dependendo se a região de origem dá suporte a zonas de disponibilidade.
+   >**Observação**: a **Recuperação de desastre entre zonas de disponibilidade** pode não ser configurável, dependendo se a região de origem dá suporte a zonas de disponibilidade.
 
 1. Na guia **Máquinas virtuais**, selecione as quatro primeiras máquinas virtuais na lista (**vi1appvm0**, **vi1appvm1**, **vi1ascsvm0** e **vi1ascsvm0**) e selecione **Avançar**.
 
-   >**Observação**: conforme mencionado anteriormente, a replicação baseada em ASR será aplicada aos servidores de aplicativos e às instâncias dos Serviços Centrais do SAP. Os servidores de banco de dados serão mantidos em sincronia dependendo da funcionalidade de replicação de banco de dados nativo.
+   >**Observação**: conforme mencionado anteriormente, a replicação baseada em ASR será aplicada aos servidores de aplicativos e às instâncias dos Serviços Centrais do SAP. Os servidores de banco de dados permanecerão sincronizados contando com a funcionalidade de replicação de banco de dados nativo.
 
 1. Na guia **Configurações de Replicação**, execute as seguintes ações:
 
-   1. Se necessário, na lista suspensa **Local de destino**, selecione a região do Azure na qual você criou o Cofre dos Serviços de Recuperação do **acss-dr-RSV**.
-   1. Verifique se o nome da assinatura do Azure usada neste laboratório aparece na lista suspensa de **Assinatura de destino**.
-   1. Na lista suspensa **Grupo de recursos de destino**, selecione **acss-dr-RG**.
-   1. Abaixo da lista suspensa **Rede virtual de failover**, selecione **Criar novo**.
+   1. Se necessário, na lista de seleção **Local de destino**, selecione a região do Azure na qual você criou o cofre dos Serviços de Recuperação **acss-dr-RSV**.
+   1. Verifique se o nome da assinatura do Azure usada neste laboratório aparece na lista seleção de **Assinatura de destino**.
+   1. Na lista de seleção **Grupo de recursos de destino**, selecione **acss-dr-RG**.
+   1. Abaixo da lista de seleção **Rede virtual de failover**, selecione **Criar novo**.
    1. No painel **Criar rede virtual**, na caixa de texto **Nome**, digite **CONTOSO-VNET-asr**
    1. Na seção **Espaço de endereço**, na caixa de texto **Intervalo de endereços**, substitua a entrada padrão por **10.10.0.0/16**.
    1. Na seção **Sub-redes**, na caixa de texto **Nome da Sub-rede**, digite **aplicativo** e, na caixa de texto **Intervalo de endereços**, digite **10.10.0.0/24**.
    1. Abaixo da entrada de sub-rede recém-adicionada, na seção **Sub-redes**, na caixa de texto **Nome da sub-rede**, insira **db** e, na caixa de texto **Intervalo de endereços**, digite **10.10.2.0/24**.
    1. No painel **Criar rede virtual**, selecione **OK**.
-   1. De volta à página **Habilitar replicação**, verifique se a entrada **(novo) aplicativo (10.10.0.0/24)** aparece na lista suspensa **Sub-rede de failover**.
+   1. De volta à página **Habilitar replicação**, verifique se a entrada **(novo) aplicativo (10.10.0.0/24)** aparece na lista de seleção **Sub-rede de failover**.
    1. Na seção **Armazenamento**, selecione o link **Exibir/editar configuração de armazenamento**.
    1. Na página **Personalizar configurações de destino**, examine a configuração resultante, mas não faça alterações e selecione **Cancelar**.
    1. Na seção **Opções de disponibilidade**, selecione o link **Exibir/editar opções de disponibilidade**.
@@ -663,7 +669,7 @@ Essas atividades correspondem às seguintes tarefas desse exercício:
    |Modelo de implantação da máquina virtual|**Resource Manager**|
    |Recuperação de desastre entre as zonas de disponibilidade|**Não**|
 
-   >**Observação**: A **Recuperação de desastre entre zonas de disponibilidade** pode não ser configurável, dependendo se a região de origem dá suporte a zonas de disponibilidade.
+   >**Observação**: a **Recuperação de desastre entre zonas de disponibilidade** pode não ser configurável, dependendo se a região de origem dá suporte a zonas de disponibilidade.
 
 1. Na guia **Máquinas virtuais**, selecione as quatro primeiras máquinas virtuais na lista (**vi1appvm0**, **vi1appvm1**, **vi1ascsvm0** e **vi1ascsvm0**) e selecione **Avançar**.
 
@@ -671,8 +677,8 @@ Essas atividades correspondem às seguintes tarefas desse exercício:
 
 1. Na guia **Configurações de Replicação**, execute as seguintes ações:
 
-   1. Se necessário, na lista suspensa **Local de destino**, selecione a região do Azure na qual você criou o Cofre dos Serviços de Recuperação do **acss-dr-RSV**.
-   1. Verifique se o nome da assinatura do Azure usada neste laboratório aparece na lista suspensa de **Assinatura de destino**.
+   1. Se necessário, na lista de seleção **Local de destino**, selecione a região do Azure na qual você criou o cofre dos Serviços de Recuperação **acss-dr-RSV**.
+   1. Verifique se o nome da assinatura do Azure usada neste laboratório aparece na lista seleção de **Assinatura de destino**.
    1. Na lista suspensa **Grupo de recursos de destino**, selecione **acss-dr-RG**.
    1. Na lista suspensa **Rede virtual de failover**, selecione **CONTOSO-VNET**.
    1. Na lista suspensa **Sub-rede de failover**, selecione **aplicativo (10.10.0.0/24)**.
@@ -695,13 +701,13 @@ Essas atividades correspondem às seguintes tarefas desse exercício:
 1. Na guia **Gerenciar** da página **Habilitar replicação**, selecione **Avançar**.
 1. Na guia **Revisão** da página **Habilitar replicação**, selecione **Habilitar replicação**.
 
-   >**Observação**: a replicação inicial pode levar um tempo considerável para ser concluída. Considerando o tempo limitado alocado para este laboratório, consulte o instrutor sobre as etapas extras a serem executadas como parte dessa tarefa. Na ausência de qualquer orientação específica, prossiga diretamente para a próxima tarefa.
+   >**Observação**: a replicação inicial pode levar um tempo considerável para ser concluída. Considerando o tempo limitado alocado para este laboratório, consulte o instrutor sobre as etapas extras a serem executadas como parte dessa tarefa. Na ausência de orientações específicas, prossiga diretamente para a próxima tarefa.
 
-   >**Observação**: Neste momento, você pode provisionar o Azure Bastion e o Firewall do Azure, no entanto, você deve automatizar o provisionamento como parte do procedimento de failover de recuperação de desastre. Isso minimizará os encargos associados à manutenção do ambiente de recuperação de desastre. O mesmo deve se aplicar a outros componentes desse ambiente que espelham a configuração da Instância Virtual primária para SAP, como compartilhamentos de arquivos Premium do Azure e roteamento personalizado.
+   >**Observação**: neste momento, você pode provisionar o Azure Bastion e o Firewall do Azure, no entanto, você deve automatizar o provisionamento como parte do procedimento de failover de recuperação de desastre. Isso minimizará os encargos associados à manutenção do ambiente de recuperação de desastre. O mesmo deve se aplicar a outros componentes desse ambiente que espelham a configuração da Instância Virtual primária para SAP, como compartilhamentos de arquivos Premium do Azure e roteamento personalizado.
 
-#### Tarefa 3: Examinar as opções de monitoramento para cargas de trabalho SAP gerenciadas pelo Centro do Azure para soluções SAP
+#### Tarefa 3: examinar as opções de monitoramento para cargas de trabalho SAP gerenciadas pelo Centro do Azure para soluções SAP
 
->**Observação**: Assim como acontece com o backup, você não poderá experimentar totalmente os recursos de monitoramento do Centro do Azure para soluções SAP. Isso requer a instalação do software SAP ou o registro de uma instância existente do Azure Monitor para soluções SAP. Em vez disso, nessa tarefa, você percorrerá a interface disponível na Instância Virtual para soluções SAP para identificar e examinar esses recursos.
+>**Observação**: assim como acontece com o backup, você não poderá experimentar totalmente os recursos de monitoramento do Centro do Azure para soluções SAP. Isso requer a instalação do software SAP ou o registro de uma instância já existente do Azure Monitor para soluções SAP. Em vez disso, nessa tarefa, você percorrerá a interface disponível na Instância Virtual para soluções SAP para identificar e examinar esses recursos.
 
 1. No computador do laboratório, na janela do Microsoft Edge que exibe o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione **Instâncias Virtuais para soluções SAP**. 
 1. Na página **Instâncias Virtuais para soluções SAP**, examine as informações de status resumidas para a instância **VI1**, incluindo os indicadores visuais de integridade e status gerais.
@@ -709,19 +715,19 @@ Essas atividades correspondem às seguintes tarefas desse exercício:
 1. Na página **VI1**, no menu de navegação vertical no lado esquerdo, selecione **Visão geral** e, no painel à direita, selecione **Monitoramento**.
 1. Examine a telemetria de monitoramento exibida no painel de monitoramento.
 
-   >**Observação**: O painel de monitoramento inclui grafos de utilização de vCPU e métricas para servidores de aplicativos, servidores de banco de dados e instâncias dos Serviços Centrais do SAP. Ele também inclui servidores de banco de dados de estatística de IOPS de disco de banco de dados. 
+   >**Observação**: o painel de monitoramento inclui grafos de utilização de vCPU e métricas para servidores de aplicativos, servidores de banco de dados e instâncias dos Serviços Centrais do SAP. Ele também inclui servidores de banco de dados de estatística de IOPS de disco de banco de dados. 
 
 1. Na página **VI1**, no menu de navegação vertical à esquerda, na seção **Monitoramento**, selecione **Insights de qualidade**.
-1. Na página **VI1 \| Insights de qualidade \| Pasta de trabalho 1**, examine a guia **Recomendação do Assistente**, que se destina a fornecer recomendações para otimizar a Instância Virtual para soluções SAP (VIS), instância central do servidor, instâncias do serviço de aplicativo e bancos de dados.
+1. Na página **VI1 \| Insights de qualidade \| Pasta de trabalho 1**, analise a guia **Recomendação do Assistente**, que se destina a fornecer recomendações para otimizar a Instância Virtual para soluções SAP (VIS), instância central do servidor, instâncias do serviço de aplicativo e bancos de dados.
 
-   >**Observação**: Essas recomendações exigem a conclusão da instalação do software SAP.
+   >**Observação**: essas recomendações exigem a conclusão da instalação do software SAP.
 
 1. Na página **VI1 \| Insights de qualidade \| Pasta de trabalho 1**, selecione a guia **Máquina Virtual** e examine o conteúdo das guias **Computação do Azure**, **Lista de Computação**, ** Extensões de Computação**, **Computação + Disco do SO** e **Computação + Discos de Dados**.
 
-   >**Observação**: Cada uma dessas guias deve incluir dados reais coletados das VMs do Azure que fazem parte da Instância Virtual para soluções SAP.
+   >**Observação**: cada uma dessas guias deve incluir dados reais coletados das VMs do Azure que fazem parte da Instância Virtual para soluções SAP.
 
-1. Na página **VI1 \| Insights de qualidade \| Pasta de trabalho 1**, selecione a guia **Verificações de Configuração** e examine o conteúdo das guias **Rede Acelerada**, **IP Público**, **Backup** e **Balanceador de Carga**. Esse conteúdo fornece uma visão geral rápida das configurações relacionadas ao desempenho e à segurança dos componentes de computação e rede da Instância Virtual para soluções SAP. A guia **Load Balancer** inclui informações do **Load Balancer Monitor** que exibem métricas do balanceador de carga de chave.
+1. Na página **VI1 \| Insights de qualidade \| Pasta de trabalho 1**, selecione a guia **Verificações de Configuração** e examine o conteúdo das guias **Rede Acelerada**, **IP Público**, **Backup** e **Load Balancer**. Esse conteúdo fornece uma visão geral rápida das configurações relacionadas ao desempenho e à segurança dos componentes de computação e rede da Instância Virtual para soluções SAP. A guia **Load Balancer** inclui informações do **Monitor do Load Balancer** que exibem métricas do balanceador de carga de chave.
 1. Na página **VI1**, no menu de navegação vertical à esquerda, na seção **Monitoramento**, selecione **Azure Monitor para soluções SAP**.
-1. Na página **VI1 \| Azure Monitor para soluções SAP**, observe a mensagem informando que o AMS não pode ser configurado, pois a instalação do software SAP\registration para VIS não está concluída.
+1. Na página **VI1 \| Azure Monitor para soluções SAP**, observe a mensagem informando que os Serviços de Mídia do Azure (AMS) não podem ser configurados, pois a instalação do software SAP\registration para VIS não está concluída.
 
-   >**Observação**: Depois de instalar o software SAP, você poderá integrá-lo a um recurso novo ou existente do Azure Monitor para soluções SAP. O Azure Monitor para soluções SAP depende dos recursos do Azure Monitor do Log Analytics e pastas de trabalho para fornecer um monitoramento abrangente das cargas de trabalho SAP hospedadas em VMs do Azure, incluindo suporte para visualizações personalizadas, consultas e alertas.
+   >**Observação**: depois de instalar o software SAP, você poderá integrá-lo a um recurso novo ou existente do Azure Monitor para soluções SAP. O Azure Monitor para soluções SAP depende dos recursos do Azure Monitor do Log Analytics e das pastas de trabalho para fornecer um monitoramento abrangente das cargas de trabalho SAP hospedadas em VMs do Azure, incluindo suporte para visualizações personalizadas, consultas e alertas.
