@@ -38,7 +38,7 @@ Neste exercício, examine e implemente os pré-requisitos para implantar cargas 
 
 Essas atividades correspondem às seguintes tarefas deste exercício:
 
-- Tarefa 1: Criar uma identidade gerenciada atribuída pelo usuário do Microsoft Entra
+- Tarefa 1: criar uma identidade gerenciada atribuída pelo usuário do Microsoft Entra
 - Tarefa 2: Criar a rede virtual do Azure
 - Tarefa 3: Criar um recurso do Azure Bastion
 - Tarefa 4: Criar uma conta de Uso Geral v2 de Armazenamento do Microsoft Azure
@@ -56,7 +56,7 @@ Nessa tarefa, crie uma identidade gerenciada atribuída pelo usuário do Microso
 1. No computador do laboratório, inicie um navegador da Web, navegue até o portal do Azure em `https://portal.azure.com` e autentique-se usando uma conta da Microsoft ou uma conta do Microsoft Entra ID com a função Proprietário na assinatura do Azure que você usa nesse laboratório.
 1. Na janela do navegador da Web que exibe o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione **Identidades Gerenciadas**.
 1. Na página **Identidades gerenciadas**, selecione **+ Criar**.
-1. Na guia **Básico** da página **Criar identidade gerenciada atribuída pelo usuário**, especifique as seguintes configurações e selecione **Examinar + criar**:
+1. Na guia **Noções básicas** da página **Criar Identidade Gerenciada Atribuída ao Usuário**, especifique as seguintes configurações e selecione **Examinar + Criar**:
 
    |Configuração|Valor|
    |---|---|
@@ -83,7 +83,7 @@ Nesta tarefa, crie a rede virtual do Azure que hospeda todas as Máquinas Virtua
 
 1. No computador do laboratório, na janela do navegador da Web que exibe o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione **Redes virtuais**. 
 1. Na página **Redes virtuais**, selecione **+ Criar**.
-1. Na guia **Básico** da página **Criar rede virtual**, especifique as seguintes configurações e selecione **Avançar**:
+1. Na guia **Noções básicas** da página **Criar rede virtual**, especifique as seguintes configurações e selecione **Avançar**:
 
    |Configuração|Valor|
    |---|---|
@@ -100,7 +100,7 @@ Nesta tarefa, crie a rede virtual do Azure que hospeda todas as Máquinas Virtua
 
    |Configuração|Valor|
    |---|---|
-   |Espaço de endereços IP|**10.0.0.0/16 (65.536 endereços)**|
+   |Espaço de endereços IP|**10.0.0.0/16 (65,536 addresses)**|
 
 1. Na lista de sub-redes, selecione o ícone da lixeira para excluir a sub-rede **padrão**.
 1. Selecione **+Adicionar uma sub-rede**.
@@ -257,7 +257,7 @@ Nesta tarefa, crie uma conta de compartilhamento de arquivos Premium do Azure us
 
    |Configuração|Valor|
    |---|---|
-   |Assinatura|O nome da assinatura do Azure usada neste laboratório|
+   |Assinatura|O nome da assinatura do Azure usada nesse laboratório|
    |Grupo de recursos|**acss-infra-RG**|
    |Nome da conta de armazenamento|qualquer nome globalmente exclusivo de 3 a 24 caracteres composto por letras e dígitos|
    |Region|o nome da mesma região do Azure que você usou anteriormente neste exercício|
@@ -317,7 +317,7 @@ Nesta tarefa, crie e configure um grupo de segurança de rede (NSG) usado para r
 
    |Configuração|Valor|
    |---|---|
-   |Assinatura|O nome da assinatura do Azure usada neste laboratório|
+   |Assinatura|O nome da assinatura do Azure usada nesse laboratório|
    |Grupo de recursos|**acss-infra-RG**|
    |Nome|**acss-infra-NSG**|
    |Region|o nome da mesma região do Azure que você usou anteriormente neste exercício|
@@ -487,7 +487,7 @@ Nesta tarefa, crie uma Máquina Virtual (VM) do Azure usada para a instalação 
 
    |Configuração|Valor|
    |---|---|
-   |Assinatura|O nome da assinatura do Azure usada neste laboratório|
+   |Assinatura|O nome da assinatura do Azure usada nesse laboratório|
    |Grupo de recursos|**acss-infra-RG**|
    |Nome da máquina virtual|**acss-infra-vm0**|
    |Region|o nome da mesma região do Azure que você usou anteriormente neste exercício|
