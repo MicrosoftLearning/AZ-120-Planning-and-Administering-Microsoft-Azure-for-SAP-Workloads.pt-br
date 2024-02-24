@@ -145,7 +145,7 @@ O exercício é composto pelas seguintes tarefas:
 
 1. No computador do laboratório, na janela do Microsoft Edge exibindo o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione **Identidades gerenciadas**.
 1. Na página **Identidades gerenciadas**, selecione **+ Criar**.
-1. Na guia **Noções básicas** da página **Criar identidade gerenciada atribuída pelo usuário**, especifique as seguintes configurações e selecione **Examinar + criar**:
+1. Na guia **Noções básicas** da página **Criar Identidade Gerenciada Atribuída ao Usuário**, especifique as seguintes configurações e selecione **Examinar + Criar**:
 
     |Configuração|Valor|
     |---|---|
@@ -176,14 +176,14 @@ O exercício é composto pelas seguintes tarefas:
     |---|---|
     |Escopo|**Storage**|
     |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
-    |Recurso|O nome da conta de armazenamento do Microsoft Azure que você criou na tarefa anterior|
+    |Recurso|O nome da conta de Armazenamento do Microsoft Azure que você criou na tarefa anterior|
     |Função|**Acesso a Dados e Leitor**|
 
 ### Tarefa 5: Criar um grupo de segurança de rede (NSG) a ser usado nas sub-redes da rede virtual que hospedará a implantação
 
 1. No computador do laboratório, na janela do Microsoft Edge exibindo o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione **Grupos de segurança de rede**.
 1. Na página **Grupos de segurança de rede**, selecione **+ Criar**.
-1. Na guia **Noções básicas** da página **Criar grupo** de segurança de rede, especifique as seguintes configurações e selecione **Examinar + criar**:
+1. Na guia **Básico** da página **Criar grupo** de segurança de rede, especifique as seguintes configurações e selecione **Examinar + criar**:
 
     |Configuração|Valor|
     |---|---|
@@ -216,7 +216,7 @@ O exercício é composto pelas seguintes tarefas:
 
 1. No computador do laboratório, na janela do Microsoft Edge que exibe o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione **Redes virtuais**. 
 1. Na página **Redes virtuais**, selecione **+ Criar**.
-1. Na guia **Básico** da página **Criar rede virtual**, especifique as seguintes configurações e selecione **Avançar**:
+1. Na guia **Noções básicas** da página **Criar rede virtual**, especifique as seguintes configurações e selecione **Avançar**:
 
     |Configuração|Valor|
     |---|---|
@@ -470,7 +470,7 @@ O exercício consiste na seguinte tarefa:
 
 1. No computador do laboratório, na janela do Microsoft Edge exibindo o portal do Azure, na caixa de texto **Pesquisar**, pesquise e selecione **Centro do Azure para soluções SAP**. 
 1. Na página **Visão geral \| do Centro do Azure para Soluções SAP**, selecione** Criar um novo sistema SAP**.
-1. Na guia **Básico** da página **Criar Instância Virtual para soluções SAP**, especifique as seguintes configurações e selecione **Avançar: Máquinas virtuais**
+1. Na guia **Básico** da página **Criar Instância Virtual para soluções SAP**, especifique as seguintes configurações e selecione **Avançar: Máquinas virtuais**
 
     |Configuração|Valor|
     |---|---|
@@ -488,7 +488,7 @@ O exercício consiste na seguinte tarefa:
     |Sub-rede do aplicativo|**aplicativo (10.5.0.0/24)**|
     |Sub-rede do banco de dados|**banco de dados (10.5.2.0/24)**|
     |Imagem do sistema operacional do aplicativo|**Red Hat Enterprise Linux 8.2 para aplicativos SAP – x64 Gen2 mais recente**|
-    |Imagem do sistema operacional do banco de dados|**Red Hat Enterprise Linux 8.2 para aplicativos SAP – x64 Gen2 mais recente**|
+    |Imagem do sistema operacional do banco de dados|**Red Hat Enterprise Linux 8.2 para aplicativos SAP - x64 Gen2 mais recente**|
     |Opção de transporte do SAP|**Criar um novo diretório de transporte SAP**|
     |Grupo de recursos de transporte|**ACSS-DEMO**|
     |Nome da conta de armazenamento|nenhuma entrada|
@@ -520,10 +520,10 @@ O exercício consiste na seguinte tarefa:
 
     >**Observação**: Se necessário, você pode solicitar aumento de cota selecionando o link **Cota de Solicitação** para um SKU específico de máquinas virtuais e enviando uma solicitação de aumento de cota. O processamento de uma solicitação normalmente leva alguns minutos.
 
-    >**Observação**: As soluções do Centro do Azure para soluções SAP impõem o uso de SKUs de VM com suporte do SAP durante a implantação.
+    >**Observação**: o Centro do Azure para soluções SAP impõem o uso de SKUs de VM com suporte do SAP durante a implantação.
 
 1. Na guia **Máquinas virtuais**, na seção **Discos de dados**, selecione o link **Exibir e personalizar a configuração**.
-1. Na página de configuração de **Disco de banco de dados**, examine a configuração recomendada sem fazer alterações e selecione **Fechar**.
+1. Na página de **Configuração do disco de banco de dados**, examine a configuração recomendada sem fazer alterações e selecione **Fechar**.
 1. De volta à guia **Máquinas virtuais**, selecione **Avançar: Visualizar arquitetura**.
 1. Na guia **Visualizar Arquitetura**, examine o diagrama que ilustra a arquitetura recomendada e selecione **Examinar + criar**.
 1. Na guia **Revisar + criar**, aguarde a conclusão do processo de validação, marque a caixa de seleção para confirmar se você tem uma cota ampla disponível na região de implantação para evitar executar o erro "Cota Insuficiente" e selecione **Criar**.
