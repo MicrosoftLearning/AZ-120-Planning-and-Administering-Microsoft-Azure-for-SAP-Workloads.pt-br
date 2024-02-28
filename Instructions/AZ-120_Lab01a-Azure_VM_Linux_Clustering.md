@@ -260,9 +260,9 @@ Neste exercício, você implantará os componentes de computação de infraestru
 
 #### Tarefa 3: Provisionar o Azure Bastion 
 
-> **Observação**: O Azure Bastion permite a conexão com as VMs do Azure sem pontos de extremidade públicos implantados na tarefa anterior deste exercício, ao mesmo tempo em que fornece proteção contra explorações de força bruta direcionadas às credenciais de nível do sistema operacional.
+> **Observação**: O Azure Bastion permite a conexão com as VMs do Azure (que você implantou na tarefa anterior deste exercício) sem usar pontos de extremidade públicos, ao mesmo tempo em que fornece proteção contra ataques de força bruta cujo alvo sejam credenciais de nível de sistema operacional.
 
-> **Observação**: Verifique se o navegador tem a funcionalidade pop-up habilitada.
+> **Observação**: Para usar o Azure Bastion, certifique-se de que o navegador tenha a funcionalidade de pop-up habilitada.
 
 1. Na janela do navegador da Web que está exibindo o portal do Azure, abra outra guia e navegue até o [**portal do Azure**](https://portal.azure.com).
 1. No portal do Azure, abra o painel do **Cloud Shell** selecionando no ícone da barra de ferramentas diretamente à direita da caixa de texto de pesquisa.
@@ -312,7 +312,7 @@ Neste exercício, você configurará o sistema operacional e o armazenamento em 
 
 1. No seu computador de laboratório, no portal do Azure, pesquise e selecione **Máquinas virtuais** e, na folha **Máquinas virtuais**, selecione a entrada **az12001a-vm0**. Isso abrirá a folha **az12001a-vm0**.
 
-1. Na folha **az12001a-vm0**, selecione **Conectar**, no menu suspenso, selecione **Conectar via Bastion**, na guia **Bastion** da **az12001a-vm0**, deixe o **Tipo de autenticação** definido como **Senha da VM**, forneça as credenciais que você definiu ao implantar a máquina virtual **az12001a-vm0**, deixe a caixa de seleção **Aberto na nova guia do navegador** e selecione **Conectar**:
+1. Na folha **az12001a-vm0**, selecione **Conectar**, no menu suspenso, selecione **Conectar via Bastion**, na guia **Bastion** da **az12001a-vm0**, deixe o **Tipo de autenticação** definido como **Senha da VM**, forneça as credenciais definidas ao implantar a máquina virtual **az12001a-vm0**, deixe a caixa de seleção **Abrir em uma nova guia do navegador** habilitada e selecione **Conectar**.
 
 1. Repita as duas etapas anteriores para se conectar via Bastion à VM do Azure **az12001a-vm1**.
 
