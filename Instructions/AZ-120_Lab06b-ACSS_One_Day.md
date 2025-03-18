@@ -402,9 +402,9 @@ Essa atividade corresponde à seguinte tarefa desse exercício:
    |Sub-rede do aplicativo|**app (10.0.2.0/24)**|
    |Sub-rede do banco de dados|**db (10.0.3.0/24)**|
    |Opções de imagem do sistema operacional do aplicativo|**Usar uma imagem do marketplace**|
-   |Imagem do sistema operacional do aplicativo|**Red Hat Enterprise Linux 8.2 para aplicativos SAP - x64 Gen2 mais recente**|
+   |Imagem do sistema operacional do aplicativo|**Red Hat Enterprise Linux 8.4 para Aplicativos SAP — x64 Gen2 mais recente**|
    |Opções de imagem do sistema operacional de banco de dados|**Usar uma imagem do marketplace**|
-   |Imagem do sistema operacional do banco de dados|**Red Hat Enterprise Linux 8.2 para aplicativos SAP - x64 Gen2 mais recente**|
+   |Imagem do sistema operacional do banco de dados|**Red Hat Enterprise Linux 8.4 para Aplicativos SAP — x64 Gen2 mais recente**|
    |Opções de transporte SAP|**Não incluir o diretório de transporte SAP**|
    |Tipo de autenticação|**SSH público**|
    |Nome de Usuário|**contososapadmin**|
