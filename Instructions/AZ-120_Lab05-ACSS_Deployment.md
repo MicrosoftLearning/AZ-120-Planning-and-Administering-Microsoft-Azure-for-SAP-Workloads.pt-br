@@ -127,7 +127,7 @@ O exercício é composto pelas seguintes tarefas:
 
     |Configuração|Valor|
     |---|---|
-    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
+    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
     |Grupo de recursos|o nome de um **novo** grupo de recursos **ACSS-DEMO**|
     |Nome da conta de armazenamento|qualquer nome globalmente exclusivo de 3 a 24 caracteres composto por letras e dígitos|
     |Region|o nome da região do Azure na qual você tem cotas de vCPU suficientes para executar esse laboratório|
@@ -149,7 +149,7 @@ O exercício é composto pelas seguintes tarefas:
 
     |Configuração|Valor|
     |---|---|
-    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
+    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
     |Grupo de recursos|**ACSS-DEMO**|
     |Region|o nome da região do Azure na qual você provisionou a conta de armazenamento anteriormente neste laboratório|
     |Nome|**Contoso-MSI**|
@@ -187,7 +187,7 @@ O exercício é composto pelas seguintes tarefas:
 
     |Configuração|Valor|
     |---|---|
-    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
+    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
     |Grupo de recursos|O nome de um **novo** grupo de recursos **CONTOSO-VNET-RG**|
     |Nome|**ACSS-DEMO-NSG**|
     |Region|o nome da região do Azure na qual você provisionou a conta de armazenamento anteriormente neste laboratório|
@@ -204,7 +204,7 @@ O exercício é composto pelas seguintes tarefas:
 
     |Configuração|Valor|
     |---|---|
-    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
+    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
     |Grupo de recursos|**CONTOSO-VNET-RG**|
     |Region|o nome da região do Azure na qual você provisionou recursos anteriormente neste laboratório|
     |Nome|**ACSS-ROUTE**|
@@ -220,7 +220,7 @@ O exercício é composto pelas seguintes tarefas:
 
     |Configuração|Valor|
     |---|---|
-    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
+    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
     |Grupo de recursos|**CONTOSO-VNET-RG**|
     |Nome da rede virtual|**CONTOSO-VNET**|
     |Region|o nome da região do Azure na qual você provisionou recursos anteriormente neste laboratório|
@@ -286,7 +286,7 @@ O exercício é composto pelas seguintes tarefas:
 
     |Configuração|Valor|
     |---|---|
-    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
+    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
     |Grupo de recursos|**CONTOSO-VNET-RG**|
     |Nome|**FirewallPolicy_contoso-firewall**|
     |Region|o nome da região do Azure na qual você provisionou recursos anteriormente neste laboratório|
@@ -371,7 +371,7 @@ O exercício é composto pelas seguintes tarefas:
 
     |Configuração|Valor|
     |---|---|
-    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
+    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
     |Grupo de recursos|**CONTOSO-VNET-RG**|
     |Region|o nome da região do Azure na qual você provisionou recursos anteriormente neste laboratório|
     |Nome|**contoso-firewal-pip**|
@@ -393,7 +393,7 @@ O exercício é composto pelas seguintes tarefas:
 
     |Configuração|Valor|
     |---|---|
-    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
+    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
     |Grupo de recursos|**CONTOSO-VNET-RG**|
     |Nome|**contoso-firewall**|
     |Region|o nome da região do Azure na qual você provisionou recursos anteriormente neste laboratório|
@@ -436,7 +436,7 @@ O exercício é composto pelas seguintes tarefas:
 
     |Configuração|Valor|
     |---|---|
-    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
+    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
     |Grupo de recursos|**CONTOSO-VNET-RG**|
     |Nome|**ACSS-BASTION**|
     |Region|o nome da região do Azure na qual você provisionou recursos anteriormente neste laboratório|
@@ -474,7 +474,7 @@ O exercício consiste na seguinte tarefa:
 
     |Configuração|Valor|
     |---|---|
-    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
+    |Assinatura|O nome da assinatura do Azure que você está usando neste laboratório|
     |Grupo de recursos|O nome de um **novo** grupo de recursos **Contoso-SAP-C1S**|
     |Nome (SID)|**C1S**|
     |Region|o nome da região do Azure na qual você provisionou recursos anteriormente neste laboratório|
@@ -487,8 +487,8 @@ O exercício consiste na seguinte tarefa:
     |Rede virtual|**CONTOSO-VNET**|
     |Sub-rede do aplicativo|**aplicativo (10.5.0.0/24)**|
     |Sub-rede do banco de dados|**banco de dados (10.5.2.0/24)**|
-    |Imagem do sistema operacional do aplicativo|**Red Hat Enterprise Linux 8.2 para aplicativos SAP – x64 Gen2 mais recente**|
-    |Imagem do sistema operacional do banco de dados|**Red Hat Enterprise Linux 8.2 para aplicativos SAP - x64 Gen2 mais recente**|
+    |Imagem do sistema operacional do aplicativo|**Red Hat Enterprise Linux 8.4 para Aplicativos SAP — x64 Gen2 mais recente**|
+    |Imagem do sistema operacional do banco de dados|**Red Hat Enterprise Linux 8.4 para Aplicativos SAP — x64 Gen2 mais recente**|
     |Opção de transporte do SAP|**Criar um novo diretório de transporte SAP**|
     |Grupo de recursos de transporte|**ACSS-DEMO**|
     |Nome da conta de armazenamento|nenhuma entrada|

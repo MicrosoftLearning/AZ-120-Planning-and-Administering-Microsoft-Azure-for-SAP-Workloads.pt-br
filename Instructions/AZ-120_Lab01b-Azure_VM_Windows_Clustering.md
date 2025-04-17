@@ -107,7 +107,9 @@ Neste exercício, você implantará os componentes de computação de infraestru
 
     > **Observação**: Se a implantação falhar com um erro, incluindo a instrução `PowerShell DSC resource MSFT_xADDomainController failed to execute Set-TargetResource functionality with error message: Domain 'adatum.com' could not be found`, use as seguintes etapas para corrigir esse problema:
 
-    - No portal do Azure, navegue até a folha da VM **adBDC**, no menu de navegação vertical no lado esquerdo, na seção **Configurações**, selecione **Extensões + aplicativos**, no painel **Extensões + aplicativos**, selecione **PrepareBDC** e, no painel **Preparar BDC**, selecione **Desinstalar**. 
+    - No portal do Azure, navegue até a folha do **adVNET**. No menu de navegação vertical no lado esquerdo, na seção **Configurações**, selecione **Servidores DNS**, na página **servidores DNS \| do adVNET**, exclua a entrada **10.0.0.5** e clique em **Salvar**.
+      
+    - Navegue até a folha da VM **adBDC**; no menu de navegação vertical no lado esquerdo, na seção **Configurações**, selecione **Extensões + aplicativos**; no painel **Extensões + aplicativos**, selecione **Preparar BDC** e, no painel **Preparar BDC**, selecione **Desinstalar**. 
 
     - Navegue de volta para a folha de VM **AdBDC** e reinicie a VM do Azure.
 
